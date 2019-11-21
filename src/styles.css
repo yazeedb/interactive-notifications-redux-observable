@@ -3,17 +3,40 @@ body {
   text-align: center;
   background-color: #24272f;
   color: white;
+  padding-top: 100px;
+}
+
+button,
+.notification {
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 button {
   padding: 8px 16px;
   font-size: 24px;
-  border-radius: 3px;
   color: white;
   font-weight: bold;
   border: none;
   margin: 0 5px;
-  cursor: pointer;
+}
+
+.notification {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  width: 200px;
+  padding: 4px 8px;
+
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+.notification.fade-out {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
 }
 
 .success {
