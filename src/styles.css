@@ -1,0 +1,49 @@
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #24272f;
+  color: white;
+}
+
+button {
+  padding: 8px 16px;
+  font-size: 24px;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.success {
+  background-color: #00c851;
+}
+
+.success:hover {
+  background-color: #007e33;
+}
+
+.danger {
+  background-color: #ff4444;
+}
+
+.danger:hover {
+  background-color: #cc0000;
+}
+
+.info {
+  background-color: #33b5e5;
+}
+
+.info:hover {
+  background-color: #0099cc;
+}
+
+.warning {
+  background-color: #ffbb33;
+}
+
+.warning:hover {
+  background-color: #ff8800;
+}
