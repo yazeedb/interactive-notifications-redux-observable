@@ -21,15 +21,24 @@ export const { actions, reducer, name } = createSlice({
     close: state => ({
       ...state,
       show: false
-    })
+    }),
+    pauseClose: state => state,
+    continueClose: state => state
   }
 });
 
 export const autoCloseEpic = action$ => {
   const close$ = action$.pipe(ofType(actions.close.type));
+  const pause$ = action$.pipe(ofType(actions.pauseClose.type));
 
   return action$.pipe(
-    ofType(actions.open.type),
-    switchMap(() => of(actions.close()).pipe(delay(3000), takeUntil(close$)))
+    ofType(actions.open.type, actions.continueClose.type),
+    switchMap(() =>
+      of(actions.close()).pipe(
+        delay(3000),
+        takeUntil(close$),
+        takeUntil(pause$)
+      )
+    )
   );
 };
