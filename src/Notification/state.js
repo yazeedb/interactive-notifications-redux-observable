@@ -35,7 +35,7 @@ export const autoCloseEpic = action$ => {
     ofType(actions.open.type, actions.continueClose.type),
     switchMap(() =>
       of(actions.close()).pipe(
-        delay(3000),
+        delay(1000),
         takeUntil(close$),
         takeUntil(pause$)
       )
