@@ -5,9 +5,8 @@ import { logger } from "redux-logger";
 
 const epicMiddleware = createEpicMiddleware();
 
-export const store = createStore(
-  reducer,
-  applyMiddleware(logger, epicMiddleware)
-);
+const store = createStore(reducer, applyMiddleware(logger, epicMiddleware));
 
 epicMiddleware.run(autoCloseEpic);
+
+export default store;

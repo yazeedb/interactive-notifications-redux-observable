@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import { Provider, connect } from "react-redux";
 
 import "./styles.css";
-import { store } from "./store";
+import store from "./store";
 import { actions } from "./Notification/state";
-import { Notification } from "./Notification";
+import Notification from "./Notification";
 
 const withRedux = connect(null, actions);
 

@@ -4,27 +4,38 @@ import { actions } from "./state";
 
 const withRedux = connect(state => state, actions);
 
-export const Notification = withRedux(
-  ({ show, message, type, close, pauseClose, continueClose }) => {
-    const baseClassName = `notification ${type}`;
+const Notification = ({
+  show,
+  message,
+  type,
+  close,
+  pauseClose,
+  continueClose
+}) => {
+  const baseClassName = `notification ${type}`;
 
-    return (
-      <div
-        className={show ? baseClassName : `${baseClassName} fade-out`}
-        onClick={() => {
-          close();
-        }}
-        onMouseEnter={pauseClose}
-        onMouseLeave={() => {
-          if (show === false) {
-            return;
-          }
+  const continueIfOpen = () => {
+    if (show === false) {
+      return;
+    }
 
-          continueClose();
-        }}
-      >
-        <p>{message}</p>
-      </div>
-    );
-  }
-);
+    continueClose();
+  };
+
+  return (
+    <div
+      className={show ? baseClassName : `${baseClassName} fade-out`}
+      onClick={() => {
+        close();
+      }}
+      onMouseEnter={pauseClose}
+      onMouseLeave={continueIfOpen}
+      onTouchStart={pauseClose}
+      onTouchEnd={continueIfOpen}
+    >
+      <p>{message}</p>
+    </div>
+  );
+};
+
+export default withRedux(Notification);
